@@ -78,4 +78,3 @@ function writeToFile(fileName, data) {
         }
     })
 }
-
