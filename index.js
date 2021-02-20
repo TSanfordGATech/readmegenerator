@@ -1,7 +1,8 @@
+// Packages needed to run this application. 
+
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
-
 const writeFileAsync = util.promisify(fs.writeFile);
 
 // Start the questions for the user. These will prompt up to the user to answer. 
@@ -61,20 +62,12 @@ function promptUser() {
             type: "input",
             name: "Contributing",
             message: "Is your project open for contributing? If yes, please tell how users can contribute:"
-        }
+        },
     ]);
 }
-
-// This function kicks off the writing for the read me file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, function (err) {
-        console.log(fileName);
-        console.log(data);
-        if (err) {
-            return console.log(err)
-        }
-        else {
-            console.log("success")
-        }
-    })
+// Confirming it will prompt the user by creating a function
+async function init() {
+    promptUser();
 }
+// call the init 
+init();
