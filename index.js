@@ -6,68 +6,105 @@ const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
 // Start the questions for the user. These will prompt up to the user to answer. 
+const questions = [
+    {
+        type: "input",
+        name: "title",
+        message: "What is the name of your project?"
+    },
+    {
+        type: "input",
+        name: "contact",
+        message: "What is your contact information?"
+    },
+    {
+        type: "input",
+        name: "deployedProjectLink",
+        message: "What is the link to your deployed project?"
+    },
+    {
+        type: "input",
+        name: "description",
+        message: "Please provide a description for your project."
+    },
+    {
+        type: "input",
+        name: "installation",
+        message: "What do users need to have installed to run this application?"
+    },
+    {
+        type: "input",
+        name: "usage",
+        message: "Provide instructions for how to use:"
+    },
+    {
+        type: "input",
+        name: "credits",
+        message: "List your contributors if applicable or NA if there were no contributors for this project."
+    },
+    {
+        type: "input",
+        name: "license",
+        message: "This field lets other developers know what they can, and cannot do, with your project. Please select your license type:",
+        choices: [
+            "Apache",
+            "Boost",
+            "BSD",
+            "Creative Commons, CCO",
+            "Creative Commons, international",
+            "Eclipse Public",
+            "GNU",
+            "IBM",
+            "ISC",
+            "MIT",
+            "Mozilla",
+            "Open Data Commons",
+            "Unlicense"
+        ]
+    },
+    {
+        type: "input",
+        name: "badges",
+        message: "input any badges you have:"
+    },
+    {
+        type: "input",
+        name: "contributing",
+        message: "Is your project open for contributing? If yes, please tell how users can contribute:"
+    }
+];
+
+// Run the function to prompt the user
 function promptUser() {
-    return inquirer.prompt([
-        {
-            type: "input",
-            name: "project-title",
-            message: "What is the name of your project?"
-        },
-        {
-            type: "input",
-            name: "contact",
-            message: "What is your contact information?"
-        },
-        {
-            type: "input",
-            name: "deployed-project",
-            message: "What is the link to your deployed project?"
-        },
-        {
-            type: "input",
-            name: "description",
-            message: "Please provide a description for your project."
-        },
-        {
-            type: "input",
-            name: "table-of-contents",
-            message: "Optional field- provide a table of contents for the user. If you do not have one, please submit NA."
-        },
-        {
-            type: "input",
-            name: "installation",
-            message: "What do users need to have installed to run this application?"
-        },
-        {
-            type: "input",
-            name: "usage",
-            message: "Provide instructions for how to use:"
-        },
-        {
-            type: "input",
-            name: "credits",
-            message: "List your contributors if applicable or NA if there were no contributors for this project."
-        },
-        {
-            type: "input",
-            name: "license",
-            message: "This field lets other developers know what they can, and cannot do, with your project. Please enter in your license type:"
-        },
-        {
-            type: "input",
-            name: "badges",
-            message: "input any badges you have:"
-        },
-        {
-            type: "input",
-            name: "Contributing",
-            message: "Is your project open for contributing? If yes, please tell how users can contribute:"
-        },
-    ]);
+    return inquirer.prompt(questions)
+};
+
+function generateReadMe(answers) {
+    return `
+    # ${answers.title}
+    
+    ## Table of Contents
+    *[Contact](#contact)
+    *[Link to Deployed Project](#deployedProjectLink)
+    *[Project Description](#description)
+    *[Users will need to install the following items to run this application:](#installation)
+    *[Usage Rights](#usage)
+    *[Credits](#credits)
+    *[License](#license)
+    *[Badges](#badges)
+    *[Contributors](#contributing)`;
 }
-// Confirming it will prompt the user by creating a function
-async function init() {
-    promptUser();
-}
-// call the init 
-init();
+
+promptUser()
+    .then(function (answers) {
+        const md = generateReadMe(answers);
+
+        return writeFileAsync("README.md", md);
+    })
+    .then(function () {
+        console.log("Successfully wrote to README.md");
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
+
