@@ -5,8 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Tori Sanford",
+  "license": "UNLICENSED",
   "dependencies": {
     "fs": "0.0.1-security",
     "inquirer": "^6.5.2",
@@ -14,5 +14,14 @@
     "utils": "^0.3.1"
   },
   "keywords": [],
-  "description": ""
+  "description": "![Creative Commons, CCO](https://img.shields.io/badge/license-Creative%20Commons%2C%20CCO-brightgreen)     # zdfgzdfgr",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TSanfordGATech/readmegenerator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TSanfordGATech/readmegenerator/issues"
+  },
+  "homepage": "https://github.com/TSanfordGATech/readmegenerator#readme"
 }
