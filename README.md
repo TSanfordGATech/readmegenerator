@@ -1,5 +1,5 @@
 
-  # zsdoigjzdfghodfi ![Creative Commons, CCO](https://img.shields.io/badge/license-Creative%20Commons%2C%20CCO-brightgreen)
+  # Read Me Generator ![Creative Commons, CCO](https://img.shields.io/badge/license-Creative%20Commons%2C%20CCO-brightgreen)
 
   # Table of Contents
   *[Contact](#Contact)
@@ -16,28 +16,28 @@
   -[Contributors](#contributing)
   
   # Contact 
-  zposdfgkpzodrkg
+  Tori.danielle.clark91@gmail.com 
   
   # Link
-  odpfgkzpodrg
+  N/A
   
   # Description
-  zsporgkoperog
+  This application allows a user to input information into a form that will create a read me file. 
   
   # Install
-  DPROgkoo
+  Node and installer
   
   # Usage Rights
-  peorokgeopgr
+  run NPM installer first to ensure you have the proper downloads on the machine. There, run using node index.js and answer the questions. 
   
   # Credits
-  POSRGKeorg
+  NA
   
   # License
   Creative Commons, CCO
   
   # Badges
-  zdofpgdfogko
+  NA
   
   # Contributors
-  zdopfgkdrpo
+  Yes, I would love feedback and participation on this application. 
