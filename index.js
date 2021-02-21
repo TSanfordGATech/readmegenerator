@@ -2,7 +2,7 @@
 const fs = require("fs");
 const util = require("util");
 const inquirer = require("inquirer");
-// const generateMarkdown = require('./utils/generateMarkdown.js');
+// Identify the file with the mark down text
 const generateMarkdown = require('./utils/generateMarkdown.js')
 
 // Start the questions for the user. These will prompt up to the user to answer. 
@@ -77,19 +77,6 @@ const questions = [
 // .then(answers => {
 //     const generateMarkdown = `# ${answers.title} ![${answers.license}](https://img.shields.io/badge/license-${escape(answers.license)}-brightgreen)
 const writeFileAsync = util.promisify(fs.writeFile);
-
-// const readmeTitle = answers.title + ".md";
-// fs.writeFile(readmeTitle, generateMarkdown, err => {
-//     if (err) console.err(err);
-//     else console.log("Success!");
-// })
-//     })
-// }
-// async function init() {
-//     promptUser();
-// }
-
-// init();
 
 function init () {
     inquirer.prompt(questions).then((answers)=> {
