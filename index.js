@@ -2,6 +2,7 @@
 
 const inquirer = require("inquirer");
 const fs = require("fs");
+// const generateMarkdown = require('./utils/generateMarkdown.js');
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -77,7 +78,7 @@ const questions = [
 function promptUser() {
     return inquirer.prompt(questions)
 };
-function generateMarkdown(answers) {
+function generateMarkdown (answers) {
     return `
     ![${answers.license}](https://img.shields.io/badge/license-${escape(answers.license)}-brightgreen)
     # ${answers.title}
