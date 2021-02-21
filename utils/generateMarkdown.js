@@ -25,18 +25,6 @@ function generateMarkdown(answers) {
   *[License](#license)
   *[Badges](#badges)
   *[Contributors](#contributing)
-
-  
-  # Table of Contents
-  -[contact](#Contact)
-  *[Link](#links)
-  *[description](#Project Description)
-  *[installation:](#Users will need to install the following items to run this application:)
-  *[usage](#Usage Rights)
-  *[credits](#Credits)
-  *[license](#License)
-  *[badges](#Badges)
-  *[contributors](#Contributing)
   
   # Contact 
   # ${answers.contact}
