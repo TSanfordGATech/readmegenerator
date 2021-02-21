@@ -19,7 +19,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "deployedProjectLink",
+        name: "link",
         message: "What is the link to your deployed project?"
     },
     {
@@ -77,14 +77,14 @@ const questions = [
 function promptUser() {
     return inquirer.prompt(questions)
 };
-function generateReadMe(answers) {
+function generateMarkdown(answers) {
     return `
-    ![${answers.license}] (https://img.shields.io/badge/license-${escape(answers.license)}-brightgreen)
+    ![${answers.license}](https://img.shields.io/badge/license-${escape(answers.license)}-brightgreen)
     # ${answers.title}
     
-    ## Table of Contents
-    *[Contact](#contact)
-    *[Link to Deployed Project](#deployedProjectLink)
+    ### Table of Contents
+    *[contact](#Contact)
+    *[link](#Links)
     *[Project Description](#description)
     *[Users will need to install the following items to run this application:](#installation)
     *[Usage Rights](#usage)
@@ -93,44 +93,44 @@ function generateReadMe(answers) {
     *[Badges](#badges)
     *[Contributors](#contributing)
     
-    ## Contact
+    ### Contact
     ${answers.contact}
     
-    ## Link to Deployed Project
+    ### Link
     ${answers.deployedProjectLink}
     
-    ## Project Description
+    ### Description
     ${answers.description}
     
-    ## Users will need to install the following items to run this application:
+    ### Install
     ${answers.installation}
     
-    ## Usage Rights
+    ### Usage Rights
     ${answers.usage}
     
-    ## Credits
+    ### Credits
     ${answers.credits}
     
-    ## License
+    ### License
     ${answers.license}
     
-    ## Badges
+    ### Badges
     ${answers.badges}
     
-    ## Contributors
+    ### Contributors
     ${answers.contributing}`;
 }
 
 promptUser()
     .then(function (answers) {
-        const md = generateReadMe(answers);
+        const md = generateMarkdown(answers);
 
-        return writeFileAsync("README.md", md);
+        return writeFileAsync('README.md', md);
     })
     .then(function () {
-        console.log("Successfully wrote to README.md");
+        console.log("Successfully wrote README.md file");
     })
     .catch(function (err) {
         console.log(err);
-    });
+    })
 
