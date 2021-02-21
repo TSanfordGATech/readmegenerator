@@ -43,7 +43,7 @@ const questions = [
         message: "List your contributors if applicable or NA if there were no contributors for this project."
     },
     {
-        type: "input",
+        type: "checkbox",
         name: "license",
         message: "This field lets other developers know what they can, and cannot do, with your project. Please select your license type:",
         choices: [
@@ -73,14 +73,13 @@ const questions = [
         message: "Is your project open for contributing? If yes, please tell how users can contribute:"
     }
 ];
-
 // Run the function to prompt the user
 function promptUser() {
     return inquirer.prompt(questions)
 };
-
 function generateReadMe(answers) {
     return `
+    ![${answers.license}] (https://img.shields.io/badge/license-${escape(answers.license)}-brightgreen)
     # ${answers.title}
     
     ## Table of Contents
@@ -92,7 +91,34 @@ function generateReadMe(answers) {
     *[Credits](#credits)
     *[License](#license)
     *[Badges](#badges)
-    *[Contributors](#contributing)`;
+    *[Contributors](#contributing)
+    
+    ## Contact
+    ${answers.contact}
+    
+    ## Link to Deployed Project
+    ${answers.deployedProjectLink}
+    
+    ## Project Description
+    ${answers.description}
+    
+    ## Users will need to install the following items to run this application:
+    ${answers.installation}
+    
+    ## Usage Rights
+    ${answers.usage}
+    
+    ## Credits
+    ${answers.credits}
+    
+    ## License
+    ${answers.license}
+    
+    ## Badges
+    ${answers.badges}
+    
+    ## Contributors
+    ${answers.contributing}`;
 }
 
 promptUser()
